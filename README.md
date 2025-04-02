@@ -53,12 +53,6 @@ Download the appropriate package for your operating system and install it.
 > For Linux users, a permission error may occur when connecting to the serial port.  
 > To resolve this, run `sudo usermod -a -G dialout $USER`, then log out and log back in or restart your system.
 
-## Open Source
-
-We'll release all the code once we reach 1,000 stars!
-
-Check out and star now!
-
 ## Where to Buy
 
 * [AliExpress Store]() (To be released)
