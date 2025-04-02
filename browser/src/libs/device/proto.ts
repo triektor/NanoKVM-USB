@@ -1,3 +1,5 @@
+import { getBit } from './utils.ts';
+
 export enum CmdEvent {
   GET_INFO = 0x01,
   SEND_KB_GENERAL_DATA = 0x02,
@@ -104,5 +106,29 @@ export class CmdPacket {
       this.SUM += i;
     }
     this.SUM &= 0xff;
+  }
+}
+
+export class InfoPacket {
+  CHIP_VERSION: string = 'V0.0';
+  IS_CONNECTED: boolean = false;
+  NUM_LOCK: boolean = false;
+  CAPS_LOCK: boolean = false;
+  SCROLL_LOCK: boolean = false;
+
+  constructor(data: number[]) {
+    if (data[0] < 0x30) {
+      throw new Error('version error');
+    }
+
+    const versionE = data[0] - 0x30;
+    const version = 1.0 + versionE / 10;
+    this.CHIP_VERSION = `V${version.toFixed(1)}`;
+
+    this.IS_CONNECTED = data[1] !== 0;
+
+    this.NUM_LOCK = getBit(data[2], 0) === 1;
+    this.CAPS_LOCK = getBit(data[2], 1) === 1;
+    this.SCROLL_LOCK = getBit(data[2], 2) === 1;
   }
 }

@@ -1,8 +1,8 @@
 import { Modifiers } from './keyboard.ts';
 import { Key as MouseKey, Mode as MouseMode } from './mouse.ts';
-import { CmdEvent, CmdPacket } from './proto.ts';
+import { CmdEvent, CmdPacket, InfoPacket } from './proto.ts';
 import { SerialPort } from './serial-port.ts';
-import { intToLittleEndianList } from './utils.ts';
+import { intToByte, intToLittleEndianList } from './utils.ts';
 
 export class Device {
   addr: number;
@@ -11,6 +11,15 @@ export class Device {
   constructor() {
     this.addr = 0x00;
     this.serialPort = new SerialPort();
+  }
+
+  async getInfo() {
+    const data = new CmdPacket(this.addr, CmdEvent.GET_INFO).encode();
+    await this.serialPort.write(data);
+
+    const rsp = await this.serialPort.read(14);
+    const rspPacket = new CmdPacket(-1, -1, rsp);
+    return new InfoPacket(rspPacket.DATA);
   }
 
   async sendKeyboardData(modifiers: Modifiers, keys: number[]) {
@@ -47,13 +56,6 @@ export class Device {
   }
 
   async sendMouseRelativeData(msKey: MouseKey, x: number, y: number, scroll: number) {
-    function intToByte(value: number): number {
-      if (value < -128 || value > 127) {
-        throw new Error('value must be in range -128 to 127 for a signed byte');
-      }
-      return (value + 256) % 256;
-    }
-
     const xByte = intToByte(x);
     const yByte = intToByte(y);
 

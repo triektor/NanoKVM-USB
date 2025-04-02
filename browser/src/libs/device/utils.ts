@@ -10,6 +10,13 @@ export function setBit(number: number, bitPosition: number, value: boolean): num
   }
 }
 
+export function intToByte(value: number): number {
+  if (value < -128 || value > 127) {
+    throw new Error('value must be in range -128 to 127 for a signed byte');
+  }
+  return (value + 256) % 256;
+}
+
 export function intToLittleEndianList(number: number): number[] {
   const byteList: number[] = [];
   for (let i = 0; i < 2; i++) {
