@@ -34,9 +34,9 @@ NanoKVM-USB captures HDMI video signals and transmits them to the host via USB 3
 
 ![interface](https://wiki.sipeed.com/hardware/assets/NanoKVM/usb/interface.jpg)
 
-## Releases
+## Versions
 
-We offer two versions of the application: **Browser** and **Desktop**. Both are available on the [Releases page](https://github.com/sipeed/NanoKVM-USB/releases).
+We offer two versions of the application: [Browser](https://github.com/sipeed/NanoKVM-USB/tree/main/browser) and [Desktop](https://github.com/sipeed/NanoKVM-USB/tree/main/desktop). Both are available on the [Releases page](https://github.com/sipeed/NanoKVM-USB/releases).
 
 ### Browser Version
 

@@ -7,7 +7,7 @@ Online website: [usbkvm.sipeed.com](https://usbkvm.sipeed.com).
 ## Development
 
 ```shell
-cd web
+cd browser
 pnpm install
 pnpm dev
 ```
