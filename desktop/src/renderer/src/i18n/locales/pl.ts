@@ -8,9 +8,9 @@ const pl = {
       failed: 'Nie udało się połączyć kamery. Spróbuj ponownie.'
     },
     modal: {
-      title: 'Wybierz USB urządzenia',
-      selectVideo: 'Proszę wybrać wejściowe wideo urządzenia',
-      selectSerial: 'Proszę wybrać port urządzenia'
+      title: 'Wybierz port USB urządzenia',
+      selectVideo: 'Proszę wybrać wejście wideo urządzenia',
+      selectSerial: 'Proszę wybrać port szeregowy urządzenia'
     },
     menu: {
       serial: 'Port',
@@ -39,7 +39,7 @@ const pl = {
         title: 'Kursor',
         pointer: 'Standardowy kursor',
         grab: 'Kursor chwytak',
-        cell: 'Kursor korórki',
+        cell: 'Kursor komórki',
         hide: 'Ukryj kursor'
       },
       mode: 'Tryb myszki',
@@ -51,7 +51,7 @@ const pl = {
       speed: 'Prędkość koła',
       fast: 'Szybko',
       slow: 'Wolno',
-      requestPointer: 'Korzystanie z trybu względnego. Kliknij pulpit, aby uzyskać wskaźnik myszy.'
+      requestPointer: 'Korzystasz z trybu względnego. Kliknij pulpit, aby uzyskać wskaźnik myszy.'
     },
     settings: {
       title: 'Ustawienia',
